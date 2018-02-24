@@ -69,7 +69,6 @@
       }
     },
     created() {
-
       this.probeType = 3
       this.listenScroll = true
       this.touch = {}
@@ -81,7 +80,7 @@
         this.$emit('select', item)
       },
       onShortcutTouchStart(e) {
-        let anchorIndex = getData(e.target, 'index')
+        let anchorIndex = getData(e.target, 'index');
         let firstTouch = e.touches[0]
         this.touch.y1 = firstTouch.pageY
         this.touch.anchorIndex = anchorIndex
