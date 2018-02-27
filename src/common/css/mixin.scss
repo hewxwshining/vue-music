@@ -10,11 +10,12 @@
 }
 
 // 不换行
-.no-wrap{
+@mixin no-wrap {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
+
 // 扩展点击区域
 // extend-click() {
 //   position: relative;

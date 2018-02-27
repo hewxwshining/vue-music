@@ -31,11 +31,11 @@
         this.$emit('select', item, index)
       },
       getDesc(song) {
-        return `${song.singer}·${song.album}`
+        return song.singer+'·'+song.album
       },
       getRankCls(index) {
         if (index <= 2) {
-          return `icon icon${index}`
+          return 'icon icon'+index
         } else {
           return 'text'
         }
