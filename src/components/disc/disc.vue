@@ -40,9 +40,10 @@ export default {
         return
       }
       getSongList(this.disc.dissid).then((res) => {
-      	console.log(res);
+      	  console.log(res);
         if (res.code === ERR_OK) {
-          this.songs = this._normalizeSongs(res.cdlist[0].songlist)
+          console.log(res);
+          // this.songs = this._normalizeSongs(res.cdlist[0].songlist)
         }
       })
     },

@@ -34,16 +34,14 @@
       },
       selectSinger(singer) {
         this.$router.push({
-          path: '/singer/${singer.id}'
+          path: '/singer/'+singer.id
         })
         this.setSinger(singer);
       },
       _getSingerList() {
         getSingerList().then((res) => {
           if (res.code === ERR_OK) {
-            
             this.singers = this._normalizeSinger(res.data.list);
-          
           }
         })
       },

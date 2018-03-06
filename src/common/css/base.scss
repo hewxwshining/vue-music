@@ -27,3 +27,9 @@ html {
     bottom: -10px;
   }
 }
+
+button.focus,
+button:focus {
+  box-shadow: none;
+  outline:none;
+}
