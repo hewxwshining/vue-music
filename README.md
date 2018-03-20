@@ -42,6 +42,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 # vue中图片懒加载
 [vue-lazyload插件地址](https://github.com/hilongjw/vue-lazyload)
 
-#请求歌单必须使用伪装请求
+# 请求歌单必须使用伪装请求
 
-#因为QQ音乐中获取歌曲地址发生了改变，所以在song.js中的createSong()中做了相应的修改
+# 因为QQ音乐中获取歌曲地址发生了改变，所以在song.js中的createSong()中做了相应的修改
