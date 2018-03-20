@@ -8,7 +8,7 @@ import MusicList from 'components/music-list/music-list'
 import { getSongList } from 'api/recommend'
 import { ERR_OK } from 'api/config'
 import { mapGetters } from 'vuex'
-import { createSong } from 'common/js/song'
+import { createReSong } from 'common/js/song'
 
 export default {
   data() {
@@ -40,18 +40,17 @@ export default {
         return
       }
       getSongList(this.disc.dissid).then((res) => {
-      	  console.log(res);
         if (res.code === ERR_OK) {
-          console.log(res);
-          // this.songs = this._normalizeSongs(res.cdlist[0].songlist)
+          this.songs = this._normalizeSongs(res.cdlist[0].songlist)
         }
       })
     },
     _normalizeSongs(list) {
       let ret = []
+
       list.forEach((musicData) => {
-        if (musicData.songid && musicData.albummid) {
-          ret.push(createSong(musicData))
+        if (musicData.id && musicData.album.mid) {
+          ret.push(createReSong(musicData))
         }
       })
       return ret
@@ -61,10 +60,5 @@ export default {
 
 </script>
 <style type="scss" scoped>
-.slide-enter-active,.slide-leave-active{
-	transition: all 0.3s;
-}
- .slide-enter, .slide-leave-to{
- 	transform: translate3d(100%, 0, 0);
- }
+  .slide-enter-active,.slide-leave-active{ transition: all 0.3s; } .slide-enter, .slide-leave-to{ transform: translate3d(100%, 0, 0); }
 </style>

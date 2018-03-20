@@ -1,9 +1,9 @@
-import {getLyric} from 'api/song'
-import {ERR_OK} from 'api/config'
-import {Base64} from 'js-base64'
+import { getLyric } from 'api/song'
+import { ERR_OK } from 'api/config'
+import { Base64 } from 'js-base64'
 
 export default class Song {
-  constructor({id, mid, singer, name, album, duration, image, url}) {
+  constructor({ id, mid, singer, name, album, duration, image, url }) {
     this.id = id
     this.mid = mid
     this.singer = singer
@@ -41,9 +41,23 @@ export function createSong(musicData) {
     album: musicData.albumname,
     duration: musicData.interval,
     image: `https://y.gtimg.cn/music/photo_new/T002R300x300M000${musicData.albummid}.jpg?max_age=2592000`,
-    url: `http://ws.stream.qqmusic.qq.com/${musicData.songid}.m4a?fromtag=46`
+    url: `http://dl.stream.qqmusic.qq.com/C400${musicData.songmid}.m4a?guid=9536422806&vkey=686F1096541113392D0A92387D4BFDEB71D71BB2BE92003674C1EA9E53CEFD5A912BBF75030A7DFB3839CE57FCFA2B36BF94CDA2A2C88E51&uin=0&fromtag=999`
   })
 }
+
+export function createReSong(musicData) {
+  return new Song({
+    id: musicData.id,
+    mid: musicData.mid,
+    singer: filterSinger(musicData.singer),
+    name: musicData.name,
+    album: musicData.album.name,
+    duration: musicData.interval,
+    image: `https://y.gtimg.cn/music/photo_new/T002R300x300M000${musicData.album.mid}.jpg?max_age=2592000`,
+    url: `http://dl.stream.qqmusic.qq.com/C400${musicData.mid}.m4a?guid=9536422806&vkey=686F1096541113392D0A92387D4BFDEB71D71BB2BE92003674C1EA9E53CEFD5A912BBF75030A7DFB3839CE57FCFA2B36BF94CDA2A2C88E51&uin=0&fromtag=999`
+  })
+}
+
 
 function filterSinger(singer) {
   let ret = []
@@ -55,4 +69,3 @@ function filterSinger(singer) {
   })
   return ret.join('/')
 }
-
